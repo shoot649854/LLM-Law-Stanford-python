@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "llm-law-stanford"
+version = "0.1.0"
+description = ""
+authors = ["shoot649854 <jojoto8845@icloud.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+streamlit = "^1.32.2"
+hugchat = "^0.4.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
