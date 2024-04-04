@@ -108,3 +108,5 @@ class DataScraper:
             legal_country_region = self.find_legal_country_region(source)
             result.append({"title": title, "text": content, "source": source, "author": author, "legal_country_region": legal_country_region})
         return result
+    
+    
