@@ -47,7 +47,7 @@ class DataScraper:
             logging.info("No articles found on the page.")
         return articles_list
     
-    def parse_articles(self, response, top_article_index: int = 10):
+    def parse_articles(self, response, top_article_index: int):
         articles_list = []
         if response.status_code == 200:
             logging.info("Request successful. Parsing articles...")
@@ -74,7 +74,7 @@ class DataScraper:
             article_content = None        
         return article_content
     
-    def find_author(self, article_link: str):
+    def find_author(self, article_link: str) -> str:
         headers = self.header
         response = requests.get(article_link, headers=headers)
         if response.status_code == 200:
@@ -84,14 +84,11 @@ class DataScraper:
                 return author["content"]
         return "Not Found"
     
-    def find_legal_country_region(self, article_link: str):
+    def find_legal_country_region(self, article_link: str) -> str:
         headers = self.header
         response = requests.get(article_link, headers=headers)
         if response.status_code == 200:
             soup = BeautifulSoup(response.content, "html.parser")
-            # Implement logic to find the legal country region
-            # Example: Look for specific keywords, phrases, etc.
-            # For demonstration purposes, let's assume we're looking for a meta tag with the name "country"
             country_region_tag = soup.find("meta", attrs={"name": "country"})
             if country_region_tag:
                 return country_region_tag["content"]
